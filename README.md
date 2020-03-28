@@ -6,3 +6,8 @@ Windows互換フリーセル そのうちプラグインで拡張できるよう
 [フリーセル　ゲーム番号からカード配列を求めるアルゴリズム](https://www.officedaytime.com/tips/freecell.html)
 
 [フリーセルの遊び方](http://freecell.webcrow.jp/Freecell/How-To-FC.html)
+
+素材
+
+[Free SVG playing cards](https://www.me.uk/cards/)パブリックドメインだから使いやすい
+
