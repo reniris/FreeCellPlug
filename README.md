@@ -9,5 +9,5 @@ Windows互換フリーセル そのうちプラグインで拡張できるよう
 
 素材
 
-[Free SVG playing cards](https://www.me.uk/cards/)パブリックドメインだから使いやすい
+[Free SVG playing cards](https://www.me.uk/cards/) パブリックドメインだから使いやすい
 
