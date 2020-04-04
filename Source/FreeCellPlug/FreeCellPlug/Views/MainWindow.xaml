@@ -40,7 +40,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <v:Card DataContext="{Binding}" Width="50" Height="70" />
+                        <v:Card DataContext="{Binding}" Width="{Binding Width}" Height="{Binding Height}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
