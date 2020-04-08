@@ -17,9 +17,10 @@ namespace FreeCellPlug.ViewModels
 {
     public class CardViewModel : ViewModel
     {
-        public CardViewModel()
+        public CardViewModel(string key = "SA")
         {
             Width = 100;
+            ResourceKey = key;
         }
 
         // Some useful code snippets for ViewModel are defined as l*(llcom, llcomn, lvcomm, lsprop, etc...).
@@ -28,7 +29,7 @@ namespace FreeCellPlug.ViewModels
             
         }
 
-        private string _ResourceKey = "SA";
+        private string _ResourceKey;
 
         public string ResourceKey
         {

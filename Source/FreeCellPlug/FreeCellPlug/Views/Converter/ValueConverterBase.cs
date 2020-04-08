@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 
@@ -43,11 +44,14 @@ namespace FreeCellPlug.Views.Converter
         public abstract S ConvertBack(T value, object parameter, CultureInfo culture);
     }
 
-    public abstract class MultiValueConverterBase<S1, S2, T> : MarkupExtension, IMultiValueConverter
+    public abstract class MultiValueConverterBase<S1, S2, T> :  IMultiValueConverter
     {
         public virtual object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length < 2)
+                return Binding.DoNothing;
+
+            if (values.Any(v => v == DependencyProperty.UnsetValue) == true)
                 return null;
 
             var val1 = (S1)values[0];
@@ -62,8 +66,6 @@ namespace FreeCellPlug.Views.Converter
             var ret = new object[] { src.s1, src.s2 };
             return ret;
         }
-
-        public override object ProvideValue(IServiceProvider serviceProvider) => this;
 
         public abstract T Convert(S1 val1, S2 val2, object parameter, CultureInfo culture);
         public abstract (S1 s1, S2 s2) ConvertBack(T value, object parameter, CultureInfo culture);

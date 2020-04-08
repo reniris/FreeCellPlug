@@ -13,6 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Views/Cards/Trump.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <conv:ResourceKeyToBrushConverter x:Key="ResKeyConv"/>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -20,13 +21,10 @@
     <Viewbox Width="{Binding Width, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Card}}}" Height="{Binding Height, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Card}}}">
         <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle.Fill>
-                <MultiBinding>
-                    <MultiBinding.Converter>
-                        <conv:ResourceKeyToBrushConverter />
-                    </MultiBinding.Converter>
+                <MultiBinding Converter="{StaticResource ResKeyConv}">
                     <MultiBinding.Bindings>
                         <Binding RelativeSource="{RelativeSource self}" />
-                        <Binding Path="ResourceKey"/>
+                        <Binding Path="ResourceKey" FallbackValue="SA"/>
                     </MultiBinding.Bindings>
                 </MultiBinding>
             </Rectangle.Fill>
