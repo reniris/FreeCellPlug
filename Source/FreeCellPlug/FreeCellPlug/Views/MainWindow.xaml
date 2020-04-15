@@ -8,11 +8,8 @@
     xmlns:Converter="clr-namespace:FreeCellPlug.Views.Converter"
     x:Class="FreeCellPlug.Views.MainWindow"
     Title="MainWindow"
-    Width="525"
+    Width="850"
     Height="350">
-    <Window.Resources>
-
-    </Window.Resources>
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>

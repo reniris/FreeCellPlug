@@ -26,7 +26,7 @@ namespace FreeCellPlug.ViewModels
 
             _Cards = ViewModelHelper.CreateReadOnlyDispatcherCollection(
             CardModels,
-            (m) => new CardViewModel() { ResourceKey =  m.Number.ToString()},
+            (m) => new CardViewModel(m.Number.ToString()) { },
             DispatcherHelper.UIDispatcher);
             
             //CompositeDisposable.Add(CardModels);

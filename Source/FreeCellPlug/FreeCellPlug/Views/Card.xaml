@@ -17,17 +17,17 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    
-    <Viewbox Width="{Binding Width, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Card}}}" Height="{Binding Height, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Card}}}">
-        <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Rectangle.Fill>
-                <MultiBinding Converter="{StaticResource ResKeyConv}">
-                    <MultiBinding.Bindings>
+
+    <ContentControl>
+        <Viewbox>
+            <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <MultiBinding Converter="{StaticResource ResKeyConv}">
                         <Binding RelativeSource="{RelativeSource self}" />
                         <Binding Path="ResourceKey" FallbackValue="SA"/>
-                    </MultiBinding.Bindings>
-                </MultiBinding>
-            </Rectangle.Fill>
-        </Rectangle>
-    </Viewbox>
+                    </MultiBinding>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Viewbox>
+    </ContentControl>
 </UserControl>

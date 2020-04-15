@@ -19,7 +19,7 @@ namespace FreeCellPlug.ViewModels
     {
         public CardViewModel(string key = "SA")
         {
-            Width = 100;
+            Width = 200;
             ResourceKey = key;
         }
 

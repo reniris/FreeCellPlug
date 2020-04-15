@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace FreeCellPlug.Views.Converter
 {
-    class ResourceKeyToBrushConverter : MultiValueConverterBase<FrameworkElement, string, Brush>
+    public class ResourceKeyToBrushConverter : MultiValueConverterBase<FrameworkElement, string, Brush>
     {
         public override Brush Convert(FrameworkElement res, string key, object parameter, CultureInfo culture)
         {
