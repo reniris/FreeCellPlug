@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="FreeCellPlug.Views.Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:FreeCellPlug.ViewModels"
+             xmlns:conv="clr-namespace:FreeCellPlug.Views.Converter"
+             xmlns:local="clr-namespace:FreeCellPlug.Views"
+             mc:Ignorable="d"              
+             d:DesignHeight="350" d:DesignWidth="250" d:DataContext="{d:DesignInstance {x:Type vm:CardViewModel}}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Views/Cards/Trump.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <conv:ResourceKeyToBrushConverter x:Key="ResKeyConv"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <ContentControl>
+        <Viewbox>
+            <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <MultiBinding Converter="{StaticResource ResKeyConv}">
+                        <Binding RelativeSource="{RelativeSource self}" />
+                        <Binding Path="ResourceKey" FallbackValue="SA"/>
+                    </MultiBinding>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Viewbox>
+    </ContentControl>
+</UserControl>

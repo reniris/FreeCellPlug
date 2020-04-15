@@ -1,20 +1,21 @@
 ﻿<Window
-    x:Class="FreeCellPlug.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
     xmlns:v="clr-namespace:FreeCellPlug.Views"
     xmlns:vm="clr-namespace:FreeCellPlug.ViewModels"
+    xmlns:Converter="clr-namespace:FreeCellPlug.Views.Converter"
+    x:Class="FreeCellPlug.Views.MainWindow"
     Title="MainWindow"
-    Width="525"
+    Width="850"
     Height="350">
-
     <Window.DataContext>
         <vm:MainWindowViewModel />
     </Window.DataContext>
 
     <behaviors:Interaction.Triggers>
+        <!--  If you make user choose 'OK or Cancel' closing Window, then please use Window Close cancel Behavior.  -->
         <!--  When ContentRendered event raised, Initialize method of ViewModel would be called.  -->
         <behaviors:EventTrigger EventName="ContentRendered">
             <l:LivetCallMethodAction MethodName="Initialize" MethodTarget="{Binding}" />
@@ -25,9 +26,21 @@
             <l:DataContextDisposeAction />
         </behaviors:EventTrigger>
 
-        <!--  If you make user choose 'OK or Cancel' closing Window, then please use Window Close cancel Behavior.  -->
-
     </behaviors:Interaction.Triggers>
-
-    <Grid />
+    <ScrollViewer>
+        <ContentControl>
+            <ItemsControl ItemsSource="{Binding Cards}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <v:Card DataContext="{Binding}" Width="{Binding Width}" Height="{Binding Height}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ContentControl>
+    </ScrollViewer>
 </Window>
