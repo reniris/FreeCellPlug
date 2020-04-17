@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FreeCellPlug.Views.Cards">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <DrawingBrush Stretch="Uniform" x:Key="CA">
         <DrawingBrush.Drawing>
