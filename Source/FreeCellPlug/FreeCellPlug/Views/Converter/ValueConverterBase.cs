@@ -14,28 +14,22 @@ namespace FreeCellPlug.Views.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value)
+            return value switch
             {
-                case S t_val:
-                    return Convert(t_val, parameter, culture);
-                case IEnumerable<S> t_arr:
-                    return t_arr.Select(t => Convert(t, parameter, culture));
-                default:
-                    return null;
-            }
+                S t_val => Convert(t_val, parameter, culture),
+                IEnumerable<S> t_arr => t_arr.Select(t => Convert(t, parameter, culture)),
+                _ => null,
+            };
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch (value)
+            return value switch
             {
-                case T u_val:
-                    return ConvertBack(u_val, parameter, culture);
-                case IEnumerable<T> u_arr:
-                    return u_arr.Select(u => ConvertBack(u, parameter, culture));
-                default:
-                    return null;
-            }
+                T u_val => ConvertBack(u_val, parameter, culture),
+                IEnumerable<T> u_arr => u_arr.Select(u => ConvertBack(u, parameter, culture)),
+                _ => null,
+            };
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider) => this;
@@ -44,7 +38,7 @@ namespace FreeCellPlug.Views.Converter
         public abstract S ConvertBack(T value, object parameter, CultureInfo culture);
     }
 
-    public abstract class MultiValueConverterBase<S1, S2, T> :  IMultiValueConverter
+    public abstract class MultiValueConverterBase<S1, S2, T> : IMultiValueConverter
     {
         public virtual object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
@@ -62,8 +56,8 @@ namespace FreeCellPlug.Views.Converter
 
         public virtual object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            var src = ConvertBack((T)value, parameter, culture);
-            var ret = new object[] { src.s1, src.s2 };
+            var (s1, s2) = ConvertBack((T)value, parameter, culture);
+            var ret = new object[] { s1, s2 };
             return ret;
         }
 

@@ -13,20 +13,14 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Views/Cards/Trump.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <conv:ResourceKeyToBrushConverter x:Key="ResKeyConv"/>
         </ResourceDictionary>
     </UserControl.Resources>
 
 
     <ContentControl>
         <Viewbox>
-            <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Rectangle.Fill>
-                    <MultiBinding Converter="{StaticResource ResKeyConv}">
-                        <Binding RelativeSource="{RelativeSource self}" />
-                        <Binding Path="ResourceKey" FallbackValue="SA"/>
-                    </MultiBinding>
-                </Rectangle.Fill>
+            <Rectangle Width="250" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top" Fill="{Binding ResourceKey, Converter={conv:ResourceKeyToBrushConverter}}">
+         
             </Rectangle>
         </Viewbox>
     </ContentControl>
